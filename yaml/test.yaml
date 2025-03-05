@@ -1,0 +1,19 @@
+experiments:
+  - name: "random-forest"
+    structure: ""
+
+  - name: "additive-smoothing"
+    structure: "kdb"
+    pseudo_counts: 1
+    kdb_k: 3
+
+  - name: "ridge"
+    solver: "scipy"
+    structure: "tan"
+
+  - name: "bayes-ridge"
+    solver: "glsh"
+    structure: "tan"
+
+  #- name: "hdp"
+  #  structure: "tan"

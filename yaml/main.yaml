@@ -1,0 +1,53 @@
+experiments:
+  # random forest
+  - name: "random-forest"
+    structure: ""
+
+  # Additive smoothing
+  #   TAN, kDB-{1,2,3}
+  - name: "additive-smoothing"
+    structure: "tan"
+    pseudo_counts: 1
+  - name: "additive-smoothing"
+    structure: "kdb"
+    pseudo_counts: 1
+    kdb_k: [1, 2, 3]
+
+  # HLS-NB
+  #   TAN, kDB-{1,2,3}
+  - name: "ridge"
+    solver: "scipy"
+    structure: "tan"
+  - name: "ridge"
+    solver: "scipy"
+    structure: "kdb"
+    kdb_k: [1, 2, 3]
+
+  # HLS-IG
+  #   TAN, kDB-{1,2,3}
+  - name: "bayes-ridge"
+    solver: "glsh"
+    scale_prior: "inverse-gamma"
+    structure: "kdb"
+    kdb_k: 3
+
+  # Ridge cv
+  #   kDB-3
+  - name: "ridge-cv"
+    solver: "scipy"
+    structure: "kdb"
+    kdb_k: 3
+
+  # Lasso
+  #   kDB-3
+  - name: "lasso"
+    solver: "scipy"
+    structure: "kdb"
+    kdb_k: 3
+
+  # HLS-C
+  #   kDB-3
+  - name: "bayes-ridge"
+    solver: "glsh"
+    structure: "kdb"
+    kdb_k: 3

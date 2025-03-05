@@ -1,0 +1,30 @@
+experiments:
+  # Intercept
+  #   kDB-3
+  - name: "ridge"
+    solver: "scipy"
+    structure: "kdb"
+    fit_intercept: True
+
+  # Additive smoothing
+  #   kDB-3
+  - name: "additive-smoothing"
+    structure: "kdb"
+    pseudo_counts: [0.2, 0.5, 1, 5, 20]
+    kdb_k: 3
+
+  # HS-C
+  #   kDB-3
+  - name: "horseshoe"
+    solver: "glsh"
+    structure: "kdb"
+    kdb_k:  3
+
+  # HS-IG
+  #   kDB-3
+  - name: "horseshoe"
+    solver: "glsh"
+    scale_prior: "inverse-gamma"
+    structure: "kdb"
+    kdb_k:  3
+

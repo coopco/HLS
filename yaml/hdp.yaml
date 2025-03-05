@@ -1,0 +1,8 @@
+experiments:
+  # HDP
+  #   TAN, kDB-{1,2,3}
+  - name: "hdp"
+    structure: "tan"
+  - name: "hdp"
+    structure: "kdb"
+    kdb_k: [1, 2, 3]

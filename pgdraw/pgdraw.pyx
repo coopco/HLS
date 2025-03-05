@@ -2,17 +2,15 @@
 # distutils: language = c++
 # distutils: extra_compile_args = -O3
 # distutils: extra_link_args = -O3
-# TODO: own gamma sampler
 # TODO: polyagamma moments
 # TODO: pass rng
-# TODO: docstrings
+# TODO: documentation
 
 import numpy as np
 cimport numpy as np
 from libc.math cimport exp, pi
 np.import_array()
 
-# Define constants
 cdef double PI2 = np.pi * np.pi
 
 def pgdraw_(np.ndarray[double, ndim=1] nv,
@@ -68,7 +66,6 @@ def pgdraw_(np.ndarray[double, ndim=1] nv,
 
     return x
 
-# TODO: how much does this impact performance?
 # cython does not use full cross-product of type combinations
 # https://docs.cython.org/en/latest/src/userguide/fusedtypes.html#fused-types-and-arrays
 ctypedef fused scalar_or_array:

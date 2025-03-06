@@ -24,10 +24,11 @@ X_test_discretized = discretizer.transform(X_test).astype(int)
 cards = np.r_[np.max(X_train_discretized, axis=0), np.max(y)].astype(int) + 1
 
 # train structure
-edges = tan(X_train, y_train)  # Or use kdb(X_tran, y_train, k=3)
+edges = tan(X_train, y_train)  # or use kdb(X_tran, y_train, k=3)
+
 # learn parameters
 node_probs = train_hls_bnc(X_train_discretized, y_train, cards, edges,
-                           version="ridge")  # Or use version="bayesian"
+                           version="ridge")  # or use version="bayesian"
 bnc = probs_to_pgmpy(node_probs, edges, len(cards), cards)
 
 # predicted probabilities

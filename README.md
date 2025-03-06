@@ -31,15 +31,12 @@ python setup.py build_ext --inplace
 ```
 
 
-### Example
+### Example (in `example.py`)
 
-A basic example using Iris data in `example.py`:
+A basic example using Iris data:
 ```python
 import numpy as np
-from bnc import tan, kdb, probs_to_pgmpy, pgmpy_infer
-from hls_functions import train_hls_bnc
 from sklearn.datasets import load_iris
-from sklearn.preprocessing import KBinsDiscretizer
 from sklearn.model_selection import train_test_split
 
 iris = load_iris()
@@ -47,19 +44,36 @@ X = iris.data
 y = iris.target
 
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
+```
+
+Any discretization method can be used, here we use a basic example:
+```python
+from sklearn.preprocessing import KBinsDiscretizer
 
 # basic discretizer
 discretizer = KBinsDiscretizer(n_bins=3, encode='ordinal')
 discretizer.fit(X_train)  # fit to training set
 
-# transform
+# transform, and ensure ints
 X_train_discretized = discretizer.transform(X_train).astype(int)
 X_test_discretized = discretizer.transform(X_test).astype(int)
 
+# need to calculate the cardinalities of each feature
 cards = np.r_[np.max(X_train_discretized, axis=0), np.max(y)].astype(int) + 1
+```
+
+For the structure learning step:
+```python
+from bnc import tan, kdb
 
 # train structure
 edges = tan(X_train, y_train)  # or use kdb(X_tran, y_train, k=3)
+```
+
+Finally, the parameters can be learned as follows:
+```python
+from hls_functions import train_hls_bnc
+from bnc import probs_to_pgmpy, pgmpy_infer
 
 # learn parameters
 node_probs = train_hls_bnc(X_train_discretized, y_train, cards, edges,

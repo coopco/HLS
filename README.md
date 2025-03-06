@@ -7,28 +7,33 @@ TODO *citation*
 
 ## Code
 
-TODO describe difference between ridge and bayesian
-TODO if using bayesian sampler, pgdraw will be compiled on import
-TODO or alternatively to compile the Cython code for the Polya-Gamma sampler, run the following under the `pgdraw/` directory:
-```
-python setup.py build_ext --inplace
-```
+The main HLS functions are provided in `hls_functions.py`. Structure learning methods are provided in `bnc.py`
+HLS can be used with a simple sklearn ridge regression, or with a Bayesian ridge implemented in `hls_sampler.py`
+
 
 ### Dependencies
 
 Requires poetry.
 
-Dependencies can be installed and environment activated using `poetry`:
+Dependencies (for HLS-NB) can be installed and environment activated using `poetry`:
 ```
 poetry install
 poetry shell
 ```
+If using the Bayesian HLS (HLS-IG), some additional dependencies must be installed using
+```
+poetry install --with glsh
+```
+Cython code under `pgdraw/` will be compiled when imported for the first time. 
+Alternatively, you can compile the pgdraw code for the by running the following under the `pgdraw/` directory:
+```
+python setup.py build_ext --inplace
+```
+
 
 ### Example
 
-`hls_functions.py`
-
-`example.py`
+A basic example using Iris data in `example.py`:
 ```python
 import numpy as np
 from bnc import tan, kdb, probs_to_pgmpy, pgmpy_infer

@@ -1,7 +1,7 @@
 # Hierarchical Linear Smoothing
 **Efficient Parameter Estimation for Bayesian Network Classifiers using Hierarchical Linear Smoothing**
 
-> <div align="justify"> Bayesian network classifiers (BNCs) possess a number of properties desirable for a modern classifier: They are easily interpretable, highly scalable, and offer adaptable complexity. However, traditional methods for learning BNCs have historically underperformed when compared to leading classification methods such as random forests. Recent parameter smoothing techniques using hierarchical Dirichlet processes have enabled BNCs to achieve performance competitive with random forests on categorical data, but these techniques are relatively inflexible, and require a complicated, specialized sampling process. In this paper, we introduce a novel method for parameter estimation that uses a log-linear regression to approximate the behaviour of hierarchical Dirichlet processes. As a linear model, our method is remarkably flexible and simple to interpret, and can leverage the vast literature on learning linear models. Our extensive experiments show that our method achieves accuracy comparable to state-of-the-art BNCs and random forests on categorical data, while being orders of magnitude faster than the former and supporting direct explainability in contrast to the latter. </div>
+> <div align="justify"> Bayesian network classifiers (BNCs) possess a number of properties desirable for a modern classifier: They are easily interpretable, highly scalable, and offer adaptable complexity. However, traditional methods for learning BNCs have historically underperformed when compared to leading classification methods such as random forests. Recent parameter smoothing techniques using hierarchical Dirichlet processes have enabled BNCs to achieve performance competitive with random forests on categorical data, but these techniques are relatively inflexible, and require a complicated, specialized sampling process. In this paper, we introduce a novel method for parameter estimation that uses a log-linear regression to approximate the behaviour of hierarchical Dirichlet processes. As a linear model, our method is remarkably flexible and simple to interpret, and can leverage the vast literature on learning linear models. Our experiments show that our method can outperform HDP smoothing while being orders of magnitude faster, remaining competitive with random forests on categorical data. </div>
 
 TODO *bibtex citation*
 
@@ -124,8 +124,6 @@ To run the scaling experiment on random data:
 python scaling.py
 ```
 Results are printed to stdout.
-
-TODO: the additional scaling experiments
 
 ### HDP experiments
 To run the HDP experiments, you will need to have the jdk installed and run the following command in the `HDP/` directory:
